@@ -1,10 +1,6 @@
-// +build windows
-
 package lock
 
-import (
-	"time"
-)
+import "time"
 
 func NewFileLock(name string, locksDir string) LockObject {
 	return &File{Base: Base{Name: name}, LocksDir: locksDir}
@@ -14,6 +10,17 @@ type File struct {
 	Base
 	LocksDir string
 	locker   *fileLocker
+}
+
+func (lock *File) newLocker(timeout time.Duration, readOnly bool, onWait func(doWait func() error) error) *fileLocker {
+	return &fileLocker{
+		baseLocker: baseLocker{
+			Timeout:  timeout,
+			ReadOnly: readOnly,
+			OnWait:   onWait,
+		},
+		FileLock: lock,
+	}
 }
 
 func (lock *File) Lock(timeout time.Duration, readOnly bool, onWait func(doWait func() error) error) error {
@@ -47,15 +54,4 @@ func (lock *File) WithLock(timeout time.Duration, readOnly bool, onWait func(doW
 	lock.locker = nil
 
 	return nil
-}
-
-func (lock *File) newLocker(timeout time.Duration, readOnly bool, onWait func(doWait func() error) error) *fileLocker {
-	return &fileLocker{
-		baseLocker: baseLocker{
-			Timeout:  timeout,
-			ReadOnly: readOnly,
-			OnWait:   onWait,
-		},
-		FileLock: lock,
-	}
 }
