@@ -50,7 +50,7 @@ var _ = Describe("Advanced build/First application", func() {
 			url := fmt.Sprintf("http://localhost:%d", containerHostPort)
 			waitTillHostReadyAndCheckResponseBody(
 				url,
-				utils.DefaultWaitTillHostReadyToRespondMaxAttempts,
+				240,
 				"Symfony Demo application",
 			)
 
