@@ -50,7 +50,7 @@ source <(multiwerf use 1.0 beta)
 ##### MacOS
 
 ```bash
-curl -L https://dl.bintray.com/flant/werf/v1.0.3-beta.9/werf-darwin-amd64-v1.0.3-beta.9 -o /tmp/werf
+curl -L https://dl.bintray.com/flant/werf/v1.0.6-rc.5/werf-darwin-amd64-v1.0.6-rc.5 -o /tmp/werf
 chmod +x /tmp/werf
 sudo mv /tmp/werf /usr/local/bin/werf
 ```
@@ -58,14 +58,14 @@ sudo mv /tmp/werf /usr/local/bin/werf
 ##### Linux
 
 ```bash
-curl -L https://dl.bintray.com/flant/werf/v1.0.3-beta.9/werf-linux-amd64-v1.0.3-beta.9 -o /tmp/werf
+curl -L https://dl.bintray.com/flant/werf/v1.0.6-rc.5/werf-linux-amd64-v1.0.6-rc.5 -o /tmp/werf
 chmod +x /tmp/werf
 sudo mv /tmp/werf /usr/local/bin/werf
 ```
 
 ##### Windows
 
-Скачайте [здесь](https://dl.bintray.com/flant/werf/v1.0.3-beta.9/werf-windows-amd64-v1.0.3-beta.9.exe).
+Скачайте [здесь](https://dl.bintray.com/flant/werf/v1.0.6-rc.5/werf-windows-amd64-v1.0.6-rc.5.exe).
 
 ### Метод 3: сборка из исходных кодов
 

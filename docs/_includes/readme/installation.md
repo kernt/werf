@@ -50,7 +50,7 @@ The latest release can be reached via [this page](https://bintray.com/flant/werf
 ##### MacOS
 
 ```bash
-curl -L https://dl.bintray.com/flant/werf/v1.0.3-beta.9/werf-darwin-amd64-v1.0.3-beta.9 -o /tmp/werf
+curl -L https://dl.bintray.com/flant/werf/v1.0.6-rc.5/werf-darwin-amd64-v1.0.6-rc.5 -o /tmp/werf
 chmod +x /tmp/werf
 sudo mv /tmp/werf /usr/local/bin/werf
 ```
@@ -58,14 +58,38 @@ sudo mv /tmp/werf /usr/local/bin/werf
 ##### Linux
 
 ```bash
-curl -L https://dl.bintray.com/flant/werf/v1.0.3-beta.9/werf-linux-amd64-v1.0.3-beta.9 -o /tmp/werf
+curl -L https://dl.bintray.com/flant/werf/v1.0.6-rc.5/werf-linux-amd64-v1.0.6-rc.5 -o /tmp/werf
 chmod +x /tmp/werf
 sudo mv /tmp/werf /usr/local/bin/werf
 ```
 
 ##### Windows
 
-Download [werf.exe](https://dl.bintray.com/flant/werf/v1.0.3-beta.9/werf-windows-amd64-v1.0.3-beta.9.exe)
+##### PowerShell
+
+```
+$WERF_BIN_PATH = "C:\ProgramData\werf\bin"
+mkdir $WERF_BIN_PATH
+
+Invoke-WebRequest -Uri https://dl.bintray.com/flant/werf/v1.0.6-rc.5/werf-windows-amd64-v1.0.6-rc.5.exe -OutFile $WERF_BIN_PATH\werf.exe
+
+[Environment]::SetEnvironmentVariable(
+    "Path",
+    [Environment]::GetEnvironmentVariable("Path", [EnvironmentVariableTarget]::Machine) + "$WERF_BIN_PATH",
+    [EnvironmentVariableTarget]::Machine)
+
+$env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
+```
+
+##### cmd.exe
+```
+set WERF_BIN_PATH="C:\ProgramData\werf\bin"
+mkdir %WERF_BIN_PATH%
+bitsadmin.exe /transfer "werf" https://dl.bintray.com/flant/werf/v1.0.6-rc.5/werf-windows-amd64-v1.0.6-rc.5.exe %WERF_BIN_PATH%\werf.exe
+setx /M PATH "%WERF_BIN_PATH%;%PATH%"
+
+# open new cmd.exe session and start using werf
+```
 
 ### Method 3: from source
 
