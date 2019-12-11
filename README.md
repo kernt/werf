@@ -190,7 +190,8 @@ Invoke-WebRequest -Uri https://dl.bintray.com/flant/werf/v1.0.6-rc.5/werf-window
 $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
 ```
 
-###### cmd.exe
+###### cmd.exe (run as Administrator)
+
 ```
 set WERF_BIN_PATH="C:\ProgramData\werf\bin"
 mkdir %WERF_BIN_PATH%
